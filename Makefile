@@ -5,7 +5,7 @@ message:
 	@echo "---------------------------------------------------------------------------------------"
 	@echo "                               For Ubuntu 16.04.2 LST                                  "
 	@echo "---------------------------------------------------------------------------------------"
-	@echo "step1 (== basic blacklist texton)"
+	@echo "step1 (== basic nocaps blacklist texton)"
 	@echo "step2 (== nvidia-driver-latest)"
 	@echo "step3 (== cuda8.0 echo-cuda8.0)"
 	@echo "step4 (== cudnn5.1-for-cuda8.0)"
@@ -17,7 +17,7 @@ message:
 	@echo "cudnn-remove (== cudnn-remove)"
 	@echo "---------------------------------------------------------------------------------------"
 
-step1: update blacklist texton
+step1: update nocaps blacklist texton
 step2: nvidia-driver-latest
 step3: cuda8.0 echo-cuda8.0
 step4: cudnn5.1-for-cuda8.0
@@ -33,6 +33,10 @@ test: git-keras mnist_cnn opencv-test
 #=====================================================================================================#
 update:
 	sudo apt-get update
+
+nocaps:
+	sudo grep -l 'XKBOPTIONS=""' /etc/default/keyboard | sudo xargs sed -i.bak -e 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/g'
+
 
 blacklist:
 	echo ""                           > test.txt
