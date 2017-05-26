@@ -10,8 +10,9 @@ message:
 	@echo "step3 (== cuda8.0 echo-cuda8.0)"
 	@echo "step4 (== cudnn5.1-for-cuda8.0)"
 	@echo "step5 (== anaconda-install)"
-	@echo "step6 (== anaconda-pip)"
-	@echo "step7 (== Dependences Opencv3.2 CV-install)"
+	@echo "step6 (== textoff)"
+	@echo "step7 (== anaconda-pip)"
+	@echo "step8 (== Dependences Opencv3.2 CV-install)"
 	@echo "test  (== git-keras mnist_cnn opencv-test)"
 	@echo "cudnn-remove (== cudnn-remove)"
 	@echo "---------------------------------------------------------------------------------------"
@@ -21,9 +22,11 @@ step2: nvidia-driver-latest
 step3: cuda8.0 echo-cuda8.0
 step4: cudnn5.1-for-cuda8.0
 step5: anaconda-install
-step6: anaconda-pip
-step7: Dependences Opencv3.2 CV-install
-test:  git-keras mnist_cnn opencv-test
+step6: textoff
+step7: anaconda-pip
+step8: Dependences Opencv3.2 CV-install
+test: git-keras mnist_cnn opencv-test
+
 
 #=====================================================================================================#
 #                                 Install Nvidia driver and software                                  #
