@@ -180,7 +180,8 @@ Dependences:
 	libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common \
 	libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev \
 	libgstreamer-plugins-base1.0-dev libavcodec-dev libavutil-dev libavfilter-dev \
-	libavformat-dev libavresample-dev
+	libavformat-dev libavresample-dev libgphoto2-6 libgphoto2-dev libdc1394-22-dev libdc1394-22 libdc1394-utils \
+	build-essential
 	@echo "Software are installed!"
 
 Opencv3.2:
