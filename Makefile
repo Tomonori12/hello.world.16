@@ -15,6 +15,8 @@ message:
 	@echo "step8 (== Dependences Opencv3.2 CV-install)"
 	@echo "test  (== git-keras mnist_cnn opencv-test)"
 	@echo "cudnn-remove (== cudnn-remove)"
+	@echo "gc+5 (== gcc-5 g++-5)"
+	@echo "gc+4 (== gcc-4.8 g++4.8)"
 	@echo "---------------------------------------------------------------------------------------"
 
 step1: update nocaps blacklist texton
@@ -26,7 +28,8 @@ step6: textoff
 step7: anaconda-pip
 step8: Dependences Opencv3.2 CV-install
 test: git-keras mnist_cnn opencv-test
-
+gc+5: gcc-5 g++-5
+gc+4: gcc-4.8 g++-4.8
 
 #=====================================================================================================#
 #                                 Install Nvidia driver and software                                  #
@@ -101,6 +104,30 @@ nvidia-quick-driver:
 	sudo add-apt-repository ppa:graphics-drivers/ppa
 	sudo apt-get update
 	sudo apt-get install -y nvidia-378
+
+
+#=====================================================================================================#
+#                        "gcc" and "g++" when it needs to be downgraded!!!                            #
+#=====================================================================================================#
+gcc-5:
+	sudo apt-get -y install gcc-5
+	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 40
+	sudo update-alternatives --config gcc
+
+g++-5:
+	sudo apt-get -y install g++-5
+	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 40
+	sudo update-alternatives --config g++
+
+gcc-4.8:
+	sudo apt-get -y install gcc-4.8
+	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+	sudo update-alternatives --config gcc
+
+g++-4.8:
+	sudo apt-get -y install g++-4.8
+	sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+	sudo update-alternatives --config g++
 
 
 #=====================================================================================================#
