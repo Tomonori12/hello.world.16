@@ -5,24 +5,26 @@ message:
 	@echo "---------------------------------------------------------------------------------------"
 	@echo "                               For Ubuntu 16.04.2 LST                                  "
 	@echo "---------------------------------------------------------------------------------------"
-	@echo "step1 (== basic nocaps blacklist texton)"
-	@echo "step2 (== nvidia-driver-latest)"
-	@echo "step3 (== cuda8.0 echo-cuda8.0)"
-	@echo "step4 (== cudnn5.1-for-cuda8.0)"
-	@echo "step5 (== anaconda-install)"
-	@echo "step6 (== textoff)"
-	@echo "step7 (== anaconda-pip)"
-	@echo "step8 (== Dependences)"
-	@echo "step9 (== Opencv3.2 CV-install)"
-	@echo "step9* (== Opencv3.2-cuda CV-install)"
-	@echo "test  (== git-keras mnist_cnn opencv-test)"
+	@echo "step1        (== basic nocaps blacklist texton)"
+	@echo "step2        (== nvidia-driver-latest)"
+	@echo "step3*       (== gcc-5 g++-5)"
+	@echo "step3        (== cuda8.0 echo-cuda8.0)"
+	@echo "step4        (== cudnn5.1-for-cuda8.0)"
+	@echo "step5        (== anaconda-install)"
+	@echo "step6        (== textoff)"
+	@echo "step7        (== anaconda-pip)"
+	@echo "step8        (== Dependences)"
+	@echo "step9        (== Opencv3.2 CV-install)"
+	@echo "step9*       (== Opencv3.2-cuda CV-install)"
+	@echo "test         (== git-keras mnist_cnn opencv-test)"
 	@echo "cudnn-remove (== cudnn-remove)"
-	@echo "gc+5 (== gcc-5 g++-5)"
-	@echo "gc+4 (== gcc-4.8 g++4.8)"
+	@echo "gc+5         (== gcc-5 g++-5)"
+	@echo "gc+4         (== gcc-4.8 g++4.8)"
 	@echo "---------------------------------------------------------------------------------------"
 
 step1: update nocaps blacklist texton
 step2: nvidia-driver-latest
+step3*: gcc-5 g++-5
 step3: cuda8.0 echo-cuda8.0
 step4: cudnn5.1-for-cuda8.0
 step5: anaconda-install
@@ -111,7 +113,7 @@ nvidia-quick-driver:
 
 
 #=====================================================================================================#
-#                        "gcc" and "g++" when it needs to be downgraded!!!                            #
+#                        "gcc" and "g++" when it needs to be downgraded for cuda!!!                   #
 #=====================================================================================================#
 gcc-5:
 	sudo apt-get -y install gcc-5
