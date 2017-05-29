@@ -46,7 +46,6 @@ update:
 nocaps:
 	sudo grep -l 'XKBOPTIONS=""' /etc/default/keyboard | sudo xargs sed -i.bak -e 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:nocaps"/g'
 
-
 blacklist:
 	echo ""                           > test.txt
 	echo "blacklist nouveau"          >> test.txt
@@ -91,7 +90,11 @@ echo-cuda8.0:
 	echo "export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:\$$LD_LIBRARY_PATH"  >> ~/.bashrc
 
 cudnn5.1-for-cuda8.0:
-	tar xzvf cudnn-8.0-linux-x64-v5.1.tgz 
+	cat dnn-cuda8.0-v5.1.tgz.gpg-* > dnn-cuda8.0-v5.1.tgz.gpg
+	gpg dnn-cuda8.0-v5.1.tgz.gpg
+	#md5sum --check dnn-cuda8.0-v5.1.tgz.md5sum
+	tar xzvf dnn-cuda8.0-v5.1.tgz
+	rm -f dnn-cuda8.0-v5.1.tgz
 	sudo cp -a cuda/lib64/* /usr/local/cuda-8.0/lib64/
 	sudo cp -a cuda/include/* /usr/local/cuda-8.0/include/
 	sudo ldconfig
