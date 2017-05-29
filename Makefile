@@ -12,7 +12,9 @@ message:
 	@echo "step5 (== anaconda-install)"
 	@echo "step6 (== textoff)"
 	@echo "step7 (== anaconda-pip)"
-	@echo "step8 (== Dependences Opencv3.2 CV-install)"
+	@echo "step8 (== Dependences)"
+	@echo "step9 (== Opencv3.2 CV-install)"
+	@echo "step9* (== Opencv3.2-cuda CV-install)"
 	@echo "test  (== git-keras mnist_cnn opencv-test)"
 	@echo "cudnn-remove (== cudnn-remove)"
 	@echo "gc+5 (== gcc-5 g++-5)"
@@ -26,7 +28,9 @@ step4: cudnn5.1-for-cuda8.0
 step5: anaconda-install
 step6: textoff
 step7: anaconda-pip
-step8: Dependences Opencv3.2 CV-install
+step8: Dependences
+step9: Opencv3.2 CV-install
+step9*: Opencv3.2-cuda CV-install
 test: git-keras mnist_cnn opencv-test
 gc+5: gcc-5 g++-5
 gc+4: gcc-4.8 g++-4.8
