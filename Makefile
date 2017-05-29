@@ -209,6 +209,7 @@ anaconda-pip:
 
 #=====================================================================================================#
 #                                       opencv install                                                #
+# (ref)  https://www.scivision.co/anaconda-python-opencv3/                                            #
 #=====================================================================================================#
 Dependences:
 	sudo apt install -y gcc g++ git libjpeg-dev libpng-dev libtiff5-dev libjasper-dev \
