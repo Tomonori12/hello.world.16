@@ -217,6 +217,12 @@ Opencv3.2:
 	cd opencv-3.2.0; mkdir release;	cd release; \
 	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=OFF -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
 
+Opencv3.2-cuda:
+	wget https://github.com/opencv/opencv/archive/3.2.0.zip
+	unzip 3.2.0.zip
+	cd opencv-3.2.0; mkdir release;	cd release; \
+	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=ON -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
+
 CV-install:
 	cd opencv-3.2.0/release; \
 	time make -j; \
