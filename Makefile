@@ -9,7 +9,7 @@ message:
 	@echo "step2        (== nvidia-driver-latest)"
 	@echo "step3*       (== gcc-5 g++-5) [if necessary]"
 	@echo "step3        (== cuda8.0 echo-cuda8.0)"
-	@echo "step4        (== cudnn5.1-for-cuda8.0)"
+	@echo "step4        (== cuda5.1-upkack cudnn5.1-for-cuda8.0)"
 	@echo "step5        (== anaconda-install)"
 	@echo "step6        (== textoff)"
 	@echo "step7        (== anaconda-pip)"
