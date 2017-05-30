@@ -9,7 +9,7 @@ message:
 	@echo "step2        (== nvidia-driver-latest)"
 	@echo "step3*       (== gcc-5 g++-5)                     [if necessary]"
 	@echo "step3        (== cuda8.0 echo-cuda8.0)"
-	@echo "step4        (== cuda5.1-uppack cudnn5.1-for-cuda8.0)"
+	@echo "step4        (== cuda5.1-unpack cudnn5.1-for-cuda8.0)"
 	@echo "step5        (== anaconda-install)"
 	@echo "step6        (== textoff)"
 	@echo "step7        (== anaconda-pip)"
@@ -26,7 +26,7 @@ step1: update nocaps blacklist texton
 step2: nvidia-driver-latest
 step3*: gcc-5 g++-5
 step3: cuda8.0 echo-cuda8.0
-step4: cuda5.1-uppack cudnn5.1-for-cuda8.0
+step4: cuda5.1-unpack cudnn5.1-for-cuda8.0
 step5: anaconda-install
 step6: textoff
 step7: anaconda-pip
@@ -89,7 +89,7 @@ echo-cuda8.0:
 	echo "export PATH=/usr/local/cuda-8.0/bin:\$$PATH"                          >> ~/.bashrc
 	echo "export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:\$$LD_LIBRARY_PATH"  >> ~/.bashrc
 
-cuda5.1-upkack:
+cuda5.1-unpack:
 	git clone https://github.com/Tomonori12/dnn
 	cd dnn; cat dnn-cuda8.0-v5.1.tgz.gpg-* > dnn-cuda8.0-v5.1.tgz.gpg; \
 	mv dnn-cuda8.0-v5.1.tgz.gpg ../
@@ -228,7 +228,7 @@ Dependences:
 Opencv3.2-get:
 	wget https://github.com/opencv/opencv/archive/3.2.0.zip
 	unzip 3.2.0.zip
-	
+
 Opencv3.2:
 	cd opencv-3.2.0; mkdir release;	cd release; \
 	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=OFF -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
@@ -250,6 +250,13 @@ CV-install:
 darkent:
 	git clone https://github.com/pjreddie/darknet
 
+
+
+#=====================================================================================================#
+#                                  bbox-label-tool install                                            #
+#=====================================================================================================#
+bbox:
+	git clone https://github.com/puzzledqs/BBox-Label-Tool
 
 #=====================================================================================================#
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
