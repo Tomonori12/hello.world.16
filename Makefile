@@ -89,12 +89,16 @@ echo-cuda8.0:
 	echo "export PATH=/usr/local/cuda-8.0/bin:\$$PATH"                          >> ~/.bashrc
 	echo "export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:\$$LD_LIBRARY_PATH"  >> ~/.bashrc
 
-cudnn5.1-for-cuda8.0:
-	cat dnn-cuda8.0-v5.1.tgz.gpg-* > dnn-cuda8.0-v5.1.tgz.gpg
+cuda5.1-upkack:
+	git clone https://github.com/Tomonori12/dnn
+	cd dnn; cat dnn-cuda8.0-v5.1.tgz.gpg-* > dnn-cuda8.0-v5.1.tgz.gpg; \
+	mv dnn-cuda8.0-v5.1.tgz.gpg ../
 	gpg dnn-cuda8.0-v5.1.tgz.gpg
 	#md5sum --check dnn-cuda8.0-v5.1.tgz.md5sum
+
+cudnn5.1-for-cuda8.0:
 	tar xzvf dnn-cuda8.0-v5.1.tgz
-	rm -f dnn-cuda8.0-v5.1.tgz
+	rm -f dnn-cuda8.0-v5.1.tgxvfz
 	sudo cp -a cuda/lib64/* /usr/local/cuda-8.0/lib64/
 	sudo cp -a cuda/include/* /usr/local/cuda-8.0/include/
 	sudo ldconfig
