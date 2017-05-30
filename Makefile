@@ -98,7 +98,7 @@ cuda5.1-upkack:
 
 cudnn5.1-for-cuda8.0:
 	tar xzvf dnn-cuda8.0-v5.1.tgz
-	rm -f dnn-cuda8.0-v5.1.tgxvfz
+	rm -f dnn-cuda8.0-v5.1.tgz
 	sudo cp -a cuda/lib64/* /usr/local/cuda-8.0/lib64/
 	sudo cp -a cuda/include/* /usr/local/cuda-8.0/include/
 	sudo ldconfig
