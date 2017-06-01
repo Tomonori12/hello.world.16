@@ -18,7 +18,7 @@ cd cmake-2.8.12.2; ./bootstrap; make -j; sudo make install
 
 
 
-- cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/hoshi/anaconda3/lib
+- cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/users/anaconda3/lib
 
 
-- cp /usr/lib/x86_64-linux-gnu/libgomp.so.1 /home/hoshi/anaconda3/lib
+- cp /usr/lib/x86_64-linux-gnu/libgomp.so.1 /home/users/anaconda3/lib
