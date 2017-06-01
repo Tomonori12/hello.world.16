@@ -13,6 +13,7 @@ message:
 	@echo "step5        (== anaconda-install)"
 	@echo "step6        (== textoff)"
 	@echo "step7        (== anaconda-pip)"
+	@echo "step8*       (==cmake-get cmake-install)          [version 2.8.12.2]"
 	@echo "step8        (== Dependences Opencv3.2-get)"
 	@echo "step9        (== Opencv3.2 CV-install)            [without CUDA]"
 	@echo "step9*       (== Opencv3.2-cuda CV-install)       [with CUDA]"
@@ -31,6 +32,7 @@ step4: cuda5.1-unpack cudnn5.1-for-cuda8.0
 step5: anaconda-install
 step6: textoff
 step7: anaconda-pip
+step8*:cmake-get cmake-install
 step8: Dependences Opencv3.2-get
 step9: Opencv3.2 CV-install
 step9*: Opencv3.2-cuda CV-install
@@ -214,12 +216,23 @@ anaconda-pip:
 	pip install tensorflow-gpu
 
 #=====================================================================================================#
+#                              cmake version 2.8.12.2 install                                         #
+#=====================================================================================================#
+cmake-get:
+	wget https://cmake.org/files/v2.8/cmake-2.8.12.2.tar.gz
+	tar xzvf cmake-2.8.12.2.tar.gz
+
+cmake-install:
+	cd cmake-2.8.12.2; ./bootstrap; make -j; sudo make install
+
+
+#=====================================================================================================#
 #                                       opencv install                                                #
 # (ref)  https://www.scivision.co/anaconda-python-opencv3/                                            #
 #=====================================================================================================#
 Dependences:
 	sudo apt install -y gcc g++ git libjpeg-dev libpng-dev libtiff5-dev libjasper-dev \
-	libavcodec-dev libavformat-dev libswscale-dev pkg-config cmake libgtk2.0-dev \
+	libavcodec-dev libavformat-dev libswscale-dev pkg-config libgtk2.0-dev \
 	libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common \
 	libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev \
 	libgstreamer-plugins-base1.0-dev libavcodec-dev libavutil-dev libavfilter-dev \
@@ -227,22 +240,22 @@ Dependences:
 	build-essential
 	@echo "Software are installed!"
 
-Opencv3.2-get:
-	wget https://github.com/opencv/opencv/archive/3.2.0.zip
-	unzip 3.2.0.zip
-
 Opencv3.2:
+	wget https://raw.githubusercontent.com/opencv/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz -P ./opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e
 	cd opencv-3.2.0; mkdir release;	cd release; \
 	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=OFF -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
 
 Opencv3.2-cuda:
+	wget https://raw.githubusercontent.com/opencv/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz -P ./opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e
 	cd opencv-3.2.0; mkdir release;	cd release; \
-	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=ON -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_IPP=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
+	time cmake -DBUILD_TIFF=ON -DBUILD_opencv_java=OFF -DWITH_CUDA=ON -DENABLE_AVX=ON -DWITH_OPENGL=ON -DWITH_OPENCL=ON -DWITH_TBB=ON -DWITH_EIGEN=ON -DWITH_V4L=ON -DWITH_VTK=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_opencv_python2=OFF -DCMAKE_INSTALL_PREFIX=$$(python3 -c "import sys; print(sys.prefix)") -DPYTHON3_EXECUTABLE=$$(which python3) -DPYTHON3_INCLUDE_DIR=$$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON3_PACKAGES_PATH=$$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") ..
 
 CV-install:
 	cd opencv-3.2.0/release; \
 	time make -j; \
 	time make install
+	cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 ~/anaconda3/lib
+	cp /usr/lib/x86_64-linux-gnu/libgomp.so.1 ~/anaconda3/lib
 	@echo "OpenCV3.2.0 installed!"
 
 
