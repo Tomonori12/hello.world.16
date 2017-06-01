@@ -16,6 +16,7 @@ message:
 	@echo "step8        (== Dependences Opencv3.2-get)"
 	@echo "step9        (== Opencv3.2 CV-install)            [without CUDA]"
 	@echo "step9*       (== Opencv3.2-cuda CV-install)       [with CUDA]"
+	@echo "step10       (== bbox-py3 start-bbox)"
 	@echo "test         (== git-keras mnist_cnn opencv-test)"
 	@echo "cudnn-remove (== cudnn-remove)"
 	@echo "gc+5         (== gcc-5 g++-5)"
@@ -33,6 +34,7 @@ step7: anaconda-pip
 step8: Dependences Opencv3.2-get
 step9: Opencv3.2 CV-install
 step9*: Opencv3.2-cuda CV-install
+step10: bbox-py3 start-bbox
 test: git-keras mnist_cnn opencv-test
 gc+5: gcc-5 g++-5
 gc+4: gcc-4.8 g++-4.8
@@ -250,15 +252,13 @@ CV-install:
 darkent:
 	git clone https://github.com/pjreddie/darknet
 
-
-
 #=====================================================================================================#
 #                                  bbox-label-tool install                                            #
 #=====================================================================================================#
 bbox-py3:
 	git clone https://github.com/Tomonori12/BBox-Label-Tool-Python3.x
 
-start3-bbox:
+start-bbox:
 	cd BBox-Label-Tool-Python3.x; python3 main.py
 
 #=====================================================================================================#
