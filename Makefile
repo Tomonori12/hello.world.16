@@ -240,6 +240,10 @@ Dependences:
 	build-essential
 	@echo "Software are installed!"
 
+Opencv3.2-get:
+	wget https://github.com/opencv/opencv/archive/3.2.0.zip
+	unzip 3.2.0.zip
+
 Opencv3.2:
 	wget https://raw.githubusercontent.com/opencv/opencv_3rdparty/81a676001ca8075ada498583e4166079e5744668/ippicv/ippicv_linux_20151201.tgz -P ./opencv-3.2.0/3rdparty/ippicv/downloads/linux-808b791a6eac9ed78d32a7666804320e
 	cd opencv-3.2.0; mkdir release;	cd release; \
