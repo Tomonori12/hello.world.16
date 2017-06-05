@@ -13,7 +13,7 @@ message:
 	@echo "step5        (== anaconda-install)"
 	@echo "step6        (== textoff)"
 	@echo "step7        (== anaconda-pip)"
-	@echo "step8*       (==cmake-get cmake-install)          [version 2.8.12.2]"
+	@echo "step8*       (== cmake-get cmake-install)         [version 2.8.12.2]"
 	@echo "step8        (== Dependences Opencv3.2-get)"
 	@echo "step9        (== Opencv3.2 CV-install)            [without CUDA]"
 	@echo "step9*       (== Opencv3.2-cuda CV-install)       [with CUDA]"
