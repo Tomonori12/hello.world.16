@@ -299,4 +299,5 @@ opencv-test:
 	python ./test2.py
 
 clean:
-	rm -rf *.* *~
+	rm *.*~
+
