@@ -98,7 +98,6 @@ cuda5.1-unpack:
 	cd dnn; cat dnn-cuda8.0-v5.1.tgz.gpg-* > dnn-cuda8.0-v5.1.tgz.gpg; \
 	mv dnn-cuda8.0-v5.1.tgz.gpg ../
 	gpg dnn-cuda8.0-v5.1.tgz.gpg
-	#md5sum --check dnn-cuda8.0-v5.1.tgz.md5sum
 
 cudnn5.1-for-cuda8.0:
 	tar xzvf dnn-cuda8.0-v5.1.tgz
